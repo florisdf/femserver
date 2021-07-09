@@ -61,6 +61,17 @@ services:
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=bw.floco.me  
 
+  netatalk:
+    image: cptactionhank/netatalk:latest
+    restart: unless-stopped
+    volumes:
+      - /femzspool/timemachine/share:/media/share
+      - /femzspool/timemachine/timemachine:/media/timemachine
+    ports:
+      - "548:548"
+    env_file:
+      - .netatalk.env
+
 volumes:
   conf:
   vhost:
