@@ -65,8 +65,8 @@ services:
     image: cptactionhank/netatalk:latest
     restart: unless-stopped
     volumes:
-      - /femzpool/timemachine/share:/media/share
-      - /femzpool/timemachine/timemachine:/media/timemachine
+      - /femzpool/:/media/share
+      - /femzpool/timemachine/:/media/timemachine
     ports:
       - "548:548"
     env_file:
