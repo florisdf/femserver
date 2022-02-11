@@ -43,17 +43,22 @@ services:
       - NET_ADMIN
       - SYS_MODULE
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=1001
       - TZ=Europe/Brussels
-      - SERVERURL=wireguard.floco.me
-      - SERVERPORT=51820
+      - SERVERURL=wg.floco.me
+      - SERVERPORT=443
       - PEERS=1
+      - PEERDNS=192.168.0.1
     volumes:
       - ./volumes/wireguard/config:/config
       - /lib/modules:/lib/modules
     ports:
       - 51820:51820/udp
+    environment:
+      - VIRTUAL_HOST=wg.floco.me
+      - VIRTUAL_PORT=51820
+      - LETSENCRYPT_HOST=wg.floco.me
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
