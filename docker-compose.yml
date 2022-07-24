@@ -71,7 +71,8 @@ services:
     environment:
       - VIRTUAL_HOST=bw.floco.me
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=bw.floco.me  
+      - LETSENCRYPT_HOST=bw.floco.me
+      - SIGNUPS_ALLOWED=false
 
   netatalk:
     image: cptactionhank/netatalk:latest
