@@ -64,7 +64,7 @@ services:
     restart: unless-stopped
 
   bitwarden:
-    image: bitwardenrs/server:latest
+    image: vaultwarden/server:latest
     restart: unless-stopped
     volumes:
       - ./volumes/bw_data:/data
@@ -83,22 +83,6 @@ services:
       - "548:548"
     env_file:
       - .netatalk.env
-
-  zettel:
-    image: sridca/neuron
-    restart: unless-stopped
-    volumes:
-      - /femzpool/zettelkasten:/notes
-    ports:
-      - "8080:8080"
-    environment:
-      - VIRTUAL_HOST=zettel.floco.me
-      - VIRTUAL_PORT=8080
-      - LETSENCRYPT_HOST=zettel.floco.me
-    command: neuron gen -ws 0.0.0.0:8080
-    user: "${UID}:${GID}"
-    env_file:
-      - .zettel.env
 
 volumes:
   conf:
